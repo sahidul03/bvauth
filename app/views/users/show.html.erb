@@ -1,0 +1,12 @@
+<h4>User information</h4>
+<%= link_to 'Edit profile', edit_user_path(current_user) %>
+<p>
+  Name: <span style="margin: 10px"> <%= @user.name %> </span><br/>
+  Email: <span style="margin: 10px"> <%= @user.email %> </span><br/>
+  Phone Number: <span style="margin: 10px"> <%= @user.phone_number %> </span><br/>
+  Roll: <span style="margin: 10px"> <%= @user.user_type %> </span><br/>
+  <% if @user.department  %>
+      Department: <span style="margin: 10px"> <%= @user.department.name %> </span><br/>
+  <% end %>
+
+</p>

@@ -1,0 +1,32 @@
+<h4>Department Name: <%= @department.name %> </h4>
+
+<div class="row">
+  <div class="col-md-6">
+    <h5>User list under this department</h5>
+    <% if @users.any? %>
+        <table >
+          <thead>
+          <th style="border: 1px solid #dadada; padding: 5px">Name</th>
+          <th style="border: 1px solid #dadada; padding: 5px">Email</th>
+          <th style="border: 1px solid #dadada; padding: 5px">User role</th>
+          <th style="border: 1px solid #dadada; padding: 5px">edit user role</th>
+          </thead>
+        <tbody>
+        <% @users.each do |user| %>
+        <tr style="border: 1px solid #dadada; padding: 5px">
+          <td style="border: 1px solid #dadada; padding: 5px"> <%= user.name %> </td>
+          <td style="border: 1px solid #dadada; padding: 5px"> <%= user.email %> </td>
+          <td style="border: 1px solid #dadada; padding: 5px"> <%= user.user_type %> </td>
+          <td style="border: 1px solid #dadada; padding: 5px"> <%= link_to 'edit role', assign_role_users_path(user) %> </td>
+        </tr>
+        <% end %>
+        </tbody>
+        </table>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    Create user under this department
+    <%= link_to 'New user', new_user_general_users_path(@department) %>
+
+  </div>
+</div>

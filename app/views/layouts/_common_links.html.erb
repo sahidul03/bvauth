@@ -1,0 +1,7 @@
+<% if current_user.user_type == 'admin' %>
+    <%= link_to 'home', admins_path %>
+<% elsif current_user.user_type == 'manager' %>
+    <%= link_to 'home', admins_path %>
+<% elsif current_user.user_type == 'user' %>
+    <%= link_to 'home', user_path(current_user) %>
+<% end %>

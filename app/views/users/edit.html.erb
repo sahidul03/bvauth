@@ -1,0 +1,19 @@
+<h4>Edit profile info</h4>
+<h5>User information</h5>
+<p>
+  Name: <span style="margin: 10px"> <%= @user.name %> </span><br/>
+  Email: <span style="margin: 10px"> <%= @user.email %> </span><br/>
+
+  <%= form_for @user do |f| %>
+
+    <p>
+    <%= f.label :phone_number %> <br>
+    <%= f.text_field :phone_number %>
+
+    </p>
+    <p>
+      <%= f.submit 'Save' %>
+    </p>
+<% end %>
+
+</p>

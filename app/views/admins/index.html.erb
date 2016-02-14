@@ -1,0 +1,14 @@
+<h2>Admin Panel</h2>
+<%= link_to 'Edit profile', edit_user_path(current_user) %>
+<h4>
+  <%= link_to 'Add new department', new_department_path %>
+</h4>
+
+<h5>Department List</h5>
+<% if @departments.any? %>
+    <% @departments.each do |department| %>
+        <h6>
+          <%= link_to department.name, department_path(department) %>
+        </h6>
+    <% end %>
+<% end %>

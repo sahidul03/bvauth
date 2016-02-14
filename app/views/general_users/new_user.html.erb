@@ -1,0 +1,38 @@
+<%= form_for @user, :url => general_users_path, method: :post do |f| %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@user.errors.count, "error") %>
+          </h2>
+          <ul>
+            <% @user.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <%= f.hidden_field :department_id, :value => @department.id%>
+    <p>
+      <%= f.label :name %> <br/>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :email %> <br/>
+      <%= f.text_field :email %>
+    </p>
+    <p>
+      <%= f.label :phone_number %> <br/>
+      <%= f.text_field :phone_number %>
+    </p>
+    <p>
+      <%= f.label :Password %> <br/>
+      <%= f.password_field :password %>
+    </p>
+    <p>
+      <%= f.label :password_confirmation %> <br/>
+      <%= f.password_field :password_confirmation %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>

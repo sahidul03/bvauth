@@ -1,0 +1,27 @@
+<h4>Assign role page</h4>
+<h5>User information</h5>
+<p>
+  Name: <span style="margin: 10px"> <%= @user.name %> </span><br/>
+  Email: <span style="margin: 10px"> <%= @user.email %> </span><br/>
+  Phone Number: <span style="margin: 10px"> <%= @user.phone_number %> </span><br/>
+  Department: <span style="margin: 10px"> <%= @user.department.name %> </span><br/>
+
+  <%= form_for @user, method: :post, :url => save_assigned_role_users_path do |f| %>
+      <%= f.hidden_field :department_id, :value => @user.department.id %>
+      <%= f.hidden_field :id, :value => @user.id %>
+    <p>
+    <div >
+      <label >Select role</label>
+      <% if current_user.user_type == 'admin' %>
+          <%= select_tag 'role', options_from_collection_for_select(UserRoleType.all,:name, :name, :selected=>@user.user_type), { :class => '' } %>
+      <% else %>
+          <%= select_tag 'role', options_from_collection_for_select(UserRoleType.where(:name=>'user'),:name, :name, :selected=>@user.user_type), { :class => '' } %>
+    <% end %>
+    </div>
+    </p>
+    <p>
+      <%= f.submit 'Save' %>
+    </p>
+  <% end %>
+
+</p>
