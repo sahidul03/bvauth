@@ -8,7 +8,7 @@ class ManagersController < ApplicationController
     if current_user.user_type == 'admin'
       redirect_to admins_path
     elsif current_user.user_type == 'user'
-      user_path(current_user)
+      redirect_to user_path(current_user)
     end
   end
 end
