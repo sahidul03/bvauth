@@ -39,7 +39,7 @@ class DepartmentsController < ApplicationController
   end
 
   def permission_check(dept_id)
-    if current_user.user_type == 'admin' || current_user.department.id == dept_id
+    if current_user.user_type == 'admin' || (current_user.department.id == dept_id.to_i && current_user.user_type == 'manager')
       #fine
     else
       flash[:alert] = "Permission denied."
